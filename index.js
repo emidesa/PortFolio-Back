@@ -13,12 +13,14 @@ const presentationRoute = require ('./Routes/presentationRoute');
 const parcoursRoute = require ('./Routes/parcoursRoute');
 const projetRoute = require ('./Routes/projetRoute');
 const skillsRoute = require ('./Routes/skillsRoute');
+const adminRoute = require ('./Routes/adminRoute');
 
 app.use('/', messageRoute);
 app.use('/', presentationRoute);
 app.use('/', parcoursRoute);
 app.use('/', projetRoute);
 app.use('/', skillsRoute);
+app.use('/', adminRoute);
 
 
 app.listen(3000, () => {

@@ -35,6 +35,21 @@ router.post("/addPresentation", (req, res) => {
     });
 });
 
+// Récupération des icones
+router.get("/allIcons", (req, res) => {
+    bdd.query("SELECT icon_url FROM Icons", (err, result) => {
+        if (err) {
+            console.log(err);
+            res.status(500).json({ message: "Erreur lors de la récupération des icônes" });
+        } else {
+            // Renvoie directement un tableau des URLs des icônes
+            const icons = result.map(icon => icon.icon_url);
+            res.json(icons);  // Renvoie le tableau des icônes
+        }
+    });
+});
+
+
 // modifier ma présentation
 
 router.put("/updatePresentation/:idPresentation", (req, res) => {
