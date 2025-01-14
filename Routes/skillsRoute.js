@@ -20,7 +20,7 @@ router.get("/allSkills", (req, res) => {
 router.post("/addSkills", (req, res) => {
     const { Name, IconeTechno } = req.body;
     const query =
-        "INSERT INTO Skills (Name, IconeTechno ) VALUES (?,?)";
+        "INSERT INTO Skills (Name, IconeTechno, category ) VALUES (?,?,?)";
 
     bdd.query(query, [Name,IconeTechno ], (err, result) => {
         if (err) {
@@ -39,7 +39,7 @@ router.put("/updateSkills/:idSkills", (req, res) => {
     const { Titre, Name, IconeTechno } = req.body;
 
     const query =
-        "UPDATE Skills SET Titre = ?, Name = ?, IconeTechno = ? WHERE idSkills = ?";
+        "UPDATE Skills SET Titre = ?, Name = ?, IconeTechno = ?, category = ? WHERE idSkills = ?";
 
     bdd.query(query, [Titre, Name, IconeTechno, idSkills], (err, result) => {
         if (err) {
