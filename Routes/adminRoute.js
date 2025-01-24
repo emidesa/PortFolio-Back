@@ -115,5 +115,18 @@ function authenticate(req, res, next) {
   });
 }
 
+router.get("/AllAdmin", authenticate, (req, res) => {
+  const query = "SELECT * FROM admin";
+
+  bdd.query(query, (err, results) => {
+    if (err) {
+      console.error("Erreur de requête :", err);
+      return res.status(500).send("Erreur serveur");
+    }
+
+    res.json(results);
+  });
+});
+
 
 module.exports = router;
