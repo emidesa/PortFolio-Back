@@ -54,12 +54,12 @@ router.get("/allIcons", (req, res) => {
 
 router.put("/updatePresentation/:idPresentation", (req, res) => {
     const { idPresentation } = req.params;
-    const { titre ,qualité, description, icone } = req.body;
+    const {Qualité, description, photo } = req.body;
 
     const query =
-        "UPDATE Presentation SET titre = ?, qualité = ?, description = ?, icone = ? WHERE idPresentation = ?";
+        "UPDATE Presentation SET Qualité = ?, description = ?, photo = ? WHERE idPresentation = ?";
 
-    bdd.query(query, [titre, qualité, description, icone, idPresentation], (err, result) => {
+    bdd.query(query, [Qualité, description, photo, idPresentation], (err, result) => {
         if (err) {
             console.log(err);
             res.status(500).json({ message: "Erreur lors de la modification de la présentation" });

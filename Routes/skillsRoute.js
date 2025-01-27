@@ -18,11 +18,11 @@ router.get("/allSkills", (req, res) => {
 //Ajouter des skills
 
 router.post("/addSkills", (req, res) => {
-    const { Name, IconeTechno } = req.body;
+    const { Name, IconeTechno, category } = req.body;
     const query =
         "INSERT INTO Skills (Name, IconeTechno, category ) VALUES (?,?,?)";
 
-    bdd.query(query, [Name,IconeTechno ], (err, result) => {
+    bdd.query(query, [Name, IconeTechno, category ], (err, result) => {
         if (err) {
             console.log(err);
             res.status(500).json({ message: "Erreur lors de l'ajout des compétences" });

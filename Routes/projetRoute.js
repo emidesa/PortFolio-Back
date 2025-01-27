@@ -19,12 +19,12 @@ router.get("/allProjets", (req, res) => {
 // Ajouter un projet
 
 router.post("/addProjet", (req, res) => {
-    const { Titre, description, Technologie, LienGit, Image } = req.body;
+    const { Titre, description, Technologie, LienGitFront,LienGitBack, Image } = req.body;
 
     const query =
-        "INSERT INTO Projet (Titre, description, Technologie, LienGit, Image) VALUES (?,?,?,?,?)";
+        "INSERT INTO Projet (Titre, description, Technologie, LienGitFront, LienGitBack,Image) VALUES (?,?,?,?,?,?)";
 
-    bdd.query(query, [Titre, description, Technologie, LienGit, Image], (err, result) => {
+    bdd.query(query, [Titre, description, Technologie, LienGitFront, LienGitBack, Image], (err, result) => {
         if (err) {
             console.log(err);
             res.status(500).json({ message: "Erreur lors de l'ajout du projet" });
@@ -38,12 +38,12 @@ router.post("/addProjet", (req, res) => {
 
 router.put("/updateProjet/:idProjet", (req, res) => {
     const { idProjet } = req.params;
-    const { Titre, description, Technologie, LienGit, Image } = req.body;
+    const { Titre, description, Technologie, LienGitFront,LienGitBack, Image } = req.body;
 
     const query =
-        "UPDATE Projet SET Titre = ?, description = ?, Technologie = ?, LienGit = ?, Image = ? WHERE idProjet = ?";
+        "UPDATE Projet SET Titre = ?, description = ?, Technologie = ?, LienGitFront = ?,LienGitBack = ?, Image = ? WHERE idProjet = ?";
 
-    bdd.query(query, [Titre, description, Technologie, LienGit, Image, idProjet], (err, result) => {
+    bdd.query(query, [Titre, description, Technologie, LienGitFront,LienGitBack, Image, idProjet], (err, result) => {
         if (err) {
             console.log(err);
             res.status(500).json({ message: "Erreur lors de la modification du projet" });
