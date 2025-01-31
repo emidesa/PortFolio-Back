@@ -8,10 +8,9 @@ router.get("/allSkills", (req, res) => {
     bdd.query("SELECT * FROM Skills", (err, result) => {
         if (err) {
             console.log(err);
-            res.status(500).json({ message: "Erreur lors de la récupération des compétences" });
-        } else {
-            res.json(result);
+            return res.status(500).json({ message: "Erreur lors de la récupération des compétences" });
         }
+        res.json(result);  // Assurez-vous que result est bien un tableau
     });
 });
 
