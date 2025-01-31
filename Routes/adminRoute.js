@@ -81,7 +81,7 @@ router.post("/loginAdmin", (req, res) => {
       const token = jwt.sign(
         { id: admin.id_admin, email: admin.email },
         secretKey,
-        { expiresIn: "24h" }
+        { expiresIn: "1h" }
       );
 
       res.json({
